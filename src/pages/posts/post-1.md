@@ -17,7 +17,8 @@ Welcome to my _new blog_ about learning Astro! Here, I will share my learning
 journey as I build a new website.
 
 <img src="https://docs.astro.build/assets/rose.webp"
-     style="width: 500px;">
+     alt="Astro logo"
+     width=500>
 
 ## What I've accomplished
 

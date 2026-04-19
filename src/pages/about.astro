@@ -1,5 +1,21 @@
 ---
 
+const page_title = "Tentang Aku"
+
+const identity = {
+	name:    "LitFill",
+	country: "Indonesia",
+	likes:   [ "Haskell"
+			 , "Koka"
+			 , "Lisps"
+			 , "Nix"
+			 ],
+}
+
+const state    = "ok";
+const finished = false;
+const limit    = 3;
+
 ---
 
 <html lang="en">
@@ -9,7 +25,7 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{page_title}</title>
 	</head>
 	<body>
 		<header>
@@ -20,10 +36,33 @@
 			</nav>
 		</header>
 		<main>
-			<h1>About Me</h1>
-			<h2>... and my new Astro site!</h2>
-			<p>Guided through Astro docs tutorial.</p>
-			<p>This will be updated.</p>
+			<section>
+				<h1>{page_title}</h1>
+				<h2>... and my new Astro site!</h2>
+				<p>Guided through Astro docs tutorial.</p>
+				<p>This will be updated.</p>
+			</section>
+			<section>
+				<p>Some of me:</p>
+				<ul class="identity">
+					<li>Name is {identity.name}.</li>
+					<li>From {identity.country}.</li>
+					{ identity.likes.length >= 2 &&
+						<li>Really likes { identity.likes[0] } and { identity.likes[1] }.</li> }
+				</ul>
+				<p>ProgLangs:</p>
+				<ul>
+					{ identity.likes.map((skill) => <li>{ skill }</li>) }
+				</ul>
+			</section>
+			<section>
+				{ state === "ok" && <p>I am ok!</p> }
+				{ finished && <p><b>This tutorial is finished.</b></p> }
+				{ limit == 3
+					? <p>The deadline is in 3 days.</p>
+					: <p>The deadline is in {limit} days.</p>
+				}
+			</section>
 		</main>
 	</body>
 </html>
