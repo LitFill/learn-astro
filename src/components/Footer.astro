@@ -1,0 +1,28 @@
+---
+
+const platform = "github";
+const username = "LitFill";
+
+const other = [
+    {
+        platform: "X",
+        username: "@razzy_ar",
+    },
+    {
+        platform: "Discord",
+        username: "users/litfill"
+    },
+]
+
+---
+
+<footer>
+    <p>Learn more about my projects on my <a href={`https://www.${platform}.com/${username}`}>{platform}</a> page!</p>
+    <p>Visit me at:</p>
+    <ul>
+        { other.map(({platform, username}) =>
+            <li>{platform}: as <a href={
+            `https://${platform.toLocaleLowerCase()}.com/${ username }`
+            }>{(username[0] === "@" ? "" : "@") + username.slice(username.indexOf("/")+1)}</a></li>) }
+    </ul>
+</footer>
