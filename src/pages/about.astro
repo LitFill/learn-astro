@@ -1,5 +1,7 @@
 ---
 
+import "../styles/global.css"
+
 const page_title = "Tentang Aku"
 
 const identity = {
@@ -16,6 +18,14 @@ const state    = "ok";
 const finished = false;
 const limit    = 3;
 
+const style_vars = {
+    skill_color: "crimson",
+    font_weight: "bold",
+    text_case  : "uppercase",
+};
+
+style_vars["skill_color"] = finished ? "crimson" : "green";
+
 ---
 
 <html lang="en">
@@ -26,6 +36,17 @@ const limit    = 3;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{page_title}</title>
+		<style define:vars={style_vars}>
+		h1 {
+			color:     purple;
+			font-size: 4rem;
+		}
+		.skill {
+			color:          var(--skill_color);
+			font-weight:    var(--font_weight);
+			text-transform: var(--text_case);
+		}
+		</style>
 	</head>
 	<body>
 		<header>
@@ -52,7 +73,8 @@ const limit    = 3;
 				</ul>
 				<p>ProgLangs:</p>
 				<ul>
-					{ identity.likes.map((skill) => <li>{ skill }</li>) }
+					{ identity.likes.map((skill) =>
+						<li class="skill">{ skill }</li>) }
 				</ul>
 			</section>
 			<section>
@@ -60,7 +82,7 @@ const limit    = 3;
 				{ finished && <p><b>This tutorial is finished.</b></p> }
 				{ limit == 3
 					? <p>The deadline is in 3 days.</p>
-					: <p>The deadline is in {limit} days.</p>
+					: <p>The deadline is in { limit } days.</p>
 				}
 			</section>
 		</main>
